@@ -65,7 +65,7 @@ export default function Footer() {
               Get in Touch
             </p>
             <ul className="mt-4 space-y-3 text-sm text-saffron-50/70">
-              <li>📞 +91 7340150780, +91 6367267190, +91 7742759492</li>
+              <li>📞 +91 7340150780, +91 6367267190</li>
               <li>✉️ jainevents1996@gmail.com</li>
               <li>📍 Capital Galleria Mall, Alwar</li>
             </ul>

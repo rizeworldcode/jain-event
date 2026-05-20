@@ -94,7 +94,7 @@ Message: ${formData.message}
               <div className="grid gap-8">
                 {[
                   { icon: "fa-location-dot", label: "Address", text: "Capital Galleria Mall, Manu Marg, 2nd Floor, C-SF 23, Alwar" },
-                  { icon: "fa-phone", label: "Phone", text: "+91 7340150780, +91 6367267190, +91 7742759492" },
+                  { icon: "fa-phone", label: "Phone", text: "+91 7340150780, +91 6367267190" },
                   { icon: "fa-envelope", label: "Email", text: "jainevents1996@gmail.com" }
                 ].map((item, i) => (
                   <div key={i} className="flex gap-6 items-start group">

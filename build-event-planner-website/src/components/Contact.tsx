@@ -78,7 +78,7 @@ Message: ${form.message}
             </p>
 
             <div className="mt-10 space-y-5">
-              <ContactRow icon="fa-solid fa-phone" label="Call Us" value="+91 7340150780, +91 6367267190, +91 7742759492" />
+              <ContactRow icon="fa-solid fa-phone" label="Call Us" value="+91 7340150780, +91 6367267190" />
               <ContactRow icon="fa-solid fa-envelope" label="Email" value="jainevents1996@gmail.com" />
               <ContactRow icon="fa-solid fa-location-dot" label="Office" value="Capital Galleria Mall, Manu Marg, 2nd Floor, C-SF 23, Alwar" />
               <ContactRow icon="fa-solid fa-clock" label="Hours" value="Mon – Sun · 24 Hours" />
