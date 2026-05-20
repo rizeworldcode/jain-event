@@ -1,4 +1,5 @@
 import { useState, type FormEvent } from "react";
+import axios from "axios";
 
 export default function Contact() {
   const [submitted, setSubmitted] = useState(false);
@@ -13,7 +14,7 @@ export default function Contact() {
     message: "",
   });
 
-  const handle = (e: FormEvent) => {
+  const handle = async (e: FormEvent) => {
     e.preventDefault();
     setLoading(true);
 
@@ -33,22 +34,34 @@ Message: ${form.message}
     const encodedMessage = encodeURIComponent(messageText);
     const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
 
-    // Open WhatsApp
-    window.open(whatsappUrl, "_blank");
+    try {
+      // Attempt backend submission
+      await axios.post("http://localhost:5000/contact", form);
+      
+      setSubmitted(true);
+      setTimeout(() => setSubmitted(false), 5000);
+      
+      // Open WhatsApp
+      window.open(whatsappUrl, "_blank");
 
-    setSubmitted(true);
-    setTimeout(() => setSubmitted(false), 5000);
-
-    setForm({
-      name: "",
-      phone: "",
-      email: "",
-      eventType: "Wedding",
-      date: "",
-      location: "",
-      message: "",
-    });
-    setLoading(false);
+      setForm({
+        name: "",
+        phone: "",
+        email: "",
+        eventType: "Wedding",
+        date: "",
+        location: "",
+        message: "",
+      });
+    } catch (error) {
+      console.error("Error sending message:", error);
+      // Fallback: Still open WhatsApp even if backend is down
+      window.open(whatsappUrl, "_blank");
+      setSubmitted(true);
+      setTimeout(() => setSubmitted(false), 5000);
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
