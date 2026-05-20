@@ -1,6 +1,5 @@
 
 import { useState, ChangeEvent, FormEvent } from "react";
-import axios from "axios";
 
 export default function ContactPage() {
 
@@ -24,7 +23,7 @@ export default function ContactPage() {
     });
   };
 
-  const sendMessage = async (e: FormEvent) => {
+  const sendMessage = (e: FormEvent) => {
     e.preventDefault();
     setLoading(true);
 
@@ -44,32 +43,21 @@ Message: ${formData.message}
     const encodedMessage = encodeURIComponent(messageText);
     const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
 
-    try {
-      await axios.post("http://localhost:5000/contact", formData);
-      
-      setSubmitted(true);
-      setTimeout(() => setSubmitted(false), 5000);
-      
-      window.open(whatsappUrl, "_blank");
+    window.open(whatsappUrl, "_blank");
+    
+    setSubmitted(true);
+    setTimeout(() => setSubmitted(false), 5000);
 
-      setFormData({
-        name: "",
-        email: "",
-        phone: "",
-        eventType: "Wedding Planning",
-        date: "",
-        location: "",
-        message: "",
-      });
-    } catch (error) {
-      console.log(error);
-      // Fallback: Still open WhatsApp
-      window.open(whatsappUrl, "_blank");
-      setSubmitted(true);
-      setTimeout(() => setSubmitted(false), 5000);
-    } finally {
-      setLoading(false);
-    }
+    setFormData({
+      name: "",
+      email: "",
+      phone: "",
+      eventType: "Wedding Planning",
+      date: "",
+      location: "",
+      message: "",
+    });
+    setLoading(false);
   };
 
   return (
